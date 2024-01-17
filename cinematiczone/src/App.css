@@ -1,0 +1,596 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Lora:wght@400;500&family=Poppins:wght@400;600&display=swap");
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --text-clr: #4a5c6c;
+  --bg-clr: #f2f4fc;
+  --border-clr: rgb(156, 176, 193);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--bg-clr);
+  background-image: url('https://images4.alphacoders.com/909/909185.jpg');
+  background-size: cover; /* This will cover the whole background */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  background-position: center; /* This will position the image in the center */
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+h2 {
+  font-family: "Lora", serif;
+  color: var(--text-clr);
+  font-size: 2rem;
+  transition: all 0.5s linear;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  /* width: 25rem; */
+  min-width: 10rem;
+  max-height: 30rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  transition: all 0.3s linear;
+}
+
+/* Reusable code */
+.container {
+  max-width: 140rem;
+  margin: auto;
+  padding: 3rem;
+}
+
+.grid {
+  /* width: 100%; */
+  display: grid;
+  gap: 3rem;
+}
+
+.grid-4-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  width: 25rem;
+  max-width: 30rem;
+  min-height: 30rem;
+  /* background-color: #fafaff; */
+  /* padding: 2rem; */
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* search css */
+.search-section {
+  margin: auto;
+  text-align: center;
+  margin: 4rem 0;
+}
+/* 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+/* Input styles */
+input {
+  width: 30rem;
+  border-radius: 100px;
+  border: none;
+  border: 1px solid var(--border-clr);
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  outline: none;
+  margin-top: 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.card-error p {
+  color: red;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+/* App header styles */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+/* Single Movie CSS code */
+.movie-section {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--text-clr);
+  display: grid;
+  place-items: center;
+}
+
+.loading {
+  font-size: 3.2rem;
+  color: var(--text-clr);
+  text-align: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.movie-section .loading {
+  font-size: 3.2rem;
+  color: var(--bg-clr);
+  text-align: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.movie-card {
+  min-width: 30rem;
+  width: 50vw;
+  /* padding: 1rem; */
+  background-color: var(--bg-clr);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 0.6fr 1fr;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 2rem;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  max-height: 50rem;
+  height: auto;
+}
+
+.movie-card .title {
+  font-size: 2.8rem;
+  color: var(--text-clr);
+  font-weight: bold;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-text {
+  font-size: 1.8rem;
+}
+
+a {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-top: 2rem;
+  padding: 3.2rem 1rem;
+  color: var(--text-clr);
+  border: 0.2rem solid var(--text-clr);
+  font-size: 1.8rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s linear;
+}
+
+a:hover {
+  background-color: var(--text-clr);
+  color: var(--bg-clr);
+}
+
+a:hover h2 {
+  color: var(--bg-clr);
+  transform: translateY(-1.5rem);
+  display: inline-block;
+}
+
+a:hover img {
+  transform: scale(1.1);
+}
+
+.back-btn {
+  padding: 1.2rem 3.6rem;
+}
+
+/* Responsive code */
+@media (max-width: 1200px) {
+  .container {
+    margin: auto;
+    max-width: 110rem;
+  }
+  .grid-4-col {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* App-link styles */
+.App-link {
+  color: #61dafb;
+}
+
+@media (max-width: 998px) {
+  .container {
+    max-width: 90rem;
+    margin: auto;
+  }
+  .grid-4-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  input {
+    width: 25rem;
+  }
+
+  .movie-section {
+    height: auto;
+    padding: 4.8rem 0;
+  }
+
+  .movie-card {
+    grid-template-columns: 1fr;
+  }
+
+  .card-content {
+    padding-left: 2rem;
+  }
+
+  .back-btn {
+    margin-bottom: 3rem;
+  }
+
+  .logo{
+    width: 70px !important;
+    height: 70px !important;
+  }
+  /* body{
+    background-image: url('https://images4.alphacoders.com/909/909185.jpg');
+  } */
+  .nav-2{
+    display: inline-block !important;
+    padding: 1px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+}
+
+@media (max-width: 601px) {
+  .logo {
+    width: 55px !important;
+    height: 55px !important;
+  }
+  .nav-2{
+    font-size: 8px !important;
+  }
+}
+
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.make {
+  background: rgba(247, 247, 247, 0.3);
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 700px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 25px;
+  font-weight: bold;
+  text-align: center;
+  flex-basis: 130px;
+  font-size: 20px;
+}
+
+.equilibrium{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.slack[type="text"],
+[type="password"]{
+  padding: 7px;
+  font-size: 12px;
+}
+
+
+.slack{
+  text-align: center;
+}
+.s-btn {
+  background: green;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 12px 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100px;
+}
+
+.s-btn:hover {
+  background: lightseagreen;
+}
+.extra{
+  color: black;
+  font-weight: 700;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .make {
+    background: rgba(247, 247, 247, 0.3);
+    border: 1px solid #ccc;
+    padding: 10px; /* Adjust padding for smaller screens */
+    border-radius: 5px;
+    width: 90%; /* Adjust the width for smaller screens */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduce box-shadow for smaller screens */
+  }
+
+  /* Adjust label styles for smaller screens */
+  label {
+    font-size: 18px;
+  }
+
+  /* Adjust spacing for smaller screens */
+  .equilibrium {
+    margin-bottom: 8px;
+  }
+
+  .slack[type="text"],
+  .slack[type="password"] {
+    padding: 5px; /* Adjust padding for smaller screens */
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+
+  /* Adjust button styles for smaller screens */
+  .s-btn {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    width: 80px; /* Adjust button width for smaller screens */
+  }
+}
+
+.math{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color:azure;
+}
+
+ .logic{
+  position:absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(46, 45, 45, 0.2);
+  z-index: 50;
+ } 
+
+ .logo{
+  width: 100px; /* Adjust the width to your preferred size */
+  height: 100px;
+ }
+
+ .specific{
+  background-color:  rgba(39, 37, 37, 0.6);
+  padding-top: 0.1px;
+  margin-top: 1px;
+ }
+
+ .shift{
+  margin-bottom: 12px;
+ }
+
+ .change{
+  background-color:  rgba(255, 255, 255, 0.6);
+ }
+
+
+h1{
+  margin-top: 0%;
+}
+
+.review{
+  padding: 5px;
+  text-align: center;
+  background-color:  rgba(152, 201, 172, 0.1);
+  border-radius: 1%;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width:auto;
+}
+.review:hover{
+  background: rgba(152, 201, 172, 0.3);
+}
+
+textarea {
+  width: 40%;
+  padding: 10px;
+  margin-top: 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: rgba(56, 55, 55, 0.5);
+  height: auto;
+  resize: vertical;
+  color: aliceblue;
+  font-weight: 700;
+}
+
+.plus{
+  background:  rgba(56, 55, 55, 0.5);
+}
+
+.first{
+  margin-bottom: 20px;
+}
+
+.second{
+  margin-top: 50px;
+}
+
+textarea:hover{
+  background: rgba(155, 152, 152, 0.5)
+}
+
+.plus:hover{
+  background: rgba(155, 152, 152, 0.5)
+} 
+
+.zero {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(231, 191, 191, 0.5);
+  
+}
+
+.suggest{
+  display: flex;
+  flex-direction: column;
+  width: 60%; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+.user-info {
+  margin-bottom: 5px;
+}
+
+.real{
+  border: 1px solid #ccc;
+  background-color:  rgba(152, 201, 172, 0.1);
+  padding: 5px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.real:hover{
+  background: rgba(155, 152, 152, 0.5)
+}
+
+.comment {
+ font-size: 16px;
+}
+.logout-button {
+  background: rgba(15, 208, 15, 0.8);
+  color: #f2f4fc;
+  border-radius: 5px; /* Make the button background transparent */ /* Set the text color (e.g., blue) */
+  border: 2px solid #0077b6; /* Add a border (you can adjust the color and width) */
+  padding: 20px; /* Adjust the padding to make the button larger */
+  font-size: 23px; /* Set the text size */
+  cursor: pointer;/* Change the cursor to a pointer on hover */
+   /* Add a smooth transition effect */
+   width: 13%;
+
+  /* Hover effect styles */
+  &:hover {
+   background-color: green;
+  }
+}
+
+.order{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* 
+.arrange{
+  display: inline-block;
+  margin-right: 5px;
+} */
+
+.nav{
+  margin-right: 5px;
+}
+
+.nav-2{
+  padding: 2px;
+  display:inline-block;
+  font-size: 12px;
+}
+
+.last{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.last NavLink {
+  font-size: 5px;
+  margin-bottom: 5px;
+  /* Add any other styles you need for the NavLink elements */
+}
+
+.refine{
+  background-color:  rgba(231, 224, 224, 0.3); 
+}
+
+/* Keyframes animation */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
